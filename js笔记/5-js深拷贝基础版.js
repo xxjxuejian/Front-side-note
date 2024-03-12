@@ -30,7 +30,9 @@ function clone(target, map = new WeakMap()) {
   }
 
   for (const key in target) {
-    cloneObj[key] = clone(target[key], map);
+    if (target.hasOwnProperty(key)) {
+      cloneObj[key] = clone(target[key], map);
+    }
   }
   return cloneObj;
 }
